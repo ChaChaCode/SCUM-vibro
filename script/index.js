@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const rankUpNotification = document.getElementById('rankUpNotification');
     const rankNameElement = document.getElementById('rankName');
     const rankRewardElement = document.getElementById('rankReward');
-    const coinValuePerSymbol = 0.000001;
+    const coinValuePerSymbol = 0.010000;
     const maxEnergy = 500;
     const energyPerTap = 1;
     let currentCoinValue = 0;
