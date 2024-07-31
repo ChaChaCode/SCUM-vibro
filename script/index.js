@@ -35,6 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'BEGINNER', min: 0.000000, reward: 0.000050 }
     ];
 
+        // Получаем User-Agent
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Проверяем, является ли устройство мобильным
+    const isMobile = /android|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i.test(userAgent);
+
+    if (!isMobile) {
+        // Если не мобильное устройство, перенаправляем на другой файл или сайт
+        window.location.href = "mobile.html"; // Укажите путь к нужному файлу или странице
+    } else {
+        // Если мобильное устройство, продолжаем загрузку текущего веб-приложения
+        console.log("Мобильное устройство обнаружено");
+    }
+    
     let bonusesReceived = {};
     ranks.forEach(rank => bonusesReceived[rank.name] = false);
 
