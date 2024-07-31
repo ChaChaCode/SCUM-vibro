@@ -727,12 +727,14 @@
   }
 }
 
-
 /* Анимации */
 @media screen and (min-width: 450px) {
   @keyframes slideUp {
     0% {
       transform: translate(-50%, 100%) scale(1);
+    }
+    70% {
+      transform: translate(-50%, -1.5%) scale(1);
     }
     100% {
       transform: translate(-50%, 0) scale(1);
@@ -742,6 +744,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(1);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(1);
     }
     100% {
       transform: translate(-50%, 100%) scale(1);
@@ -755,6 +760,9 @@
       transform: translate(-50%, 100%) scale(0.95);
       animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.95);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.95);
     }
@@ -764,6 +772,9 @@
     0% {
       transform: translate(-50%, 0) scale(0.95);
       animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.95);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.95);
@@ -776,6 +787,9 @@
     0% {
       transform: translate(-50%, 100%) scale(0.94);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.94);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.94);
     }
@@ -784,6 +798,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(0.94);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.94);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.94);
@@ -796,6 +813,9 @@
     0% {
       transform: translate(-50%, 100%) scale(0.90);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.90);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.90);
     }
@@ -804,6 +824,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(0.90);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.90);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.90);
@@ -816,6 +839,9 @@
     0% {
       transform: translate(-50%, 100%) scale(0.90);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.90);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.90);
     }
@@ -824,6 +850,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(0.90);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.90);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.90);
@@ -836,6 +865,9 @@
     0% {
       transform: translate(-50%, 100%) scale(0.85);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.85);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.85);
     }
@@ -844,6 +876,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(0.85);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.85);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.85);
@@ -856,6 +891,9 @@
     0% {
       transform: translate(-50%, 100%) scale(0.82);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.82);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.82);
     }
@@ -864,6 +902,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(0.82);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.82);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.82);
@@ -876,6 +917,9 @@
     0% {
       transform: translate(-50%, 100%) scale(0.78);
     }
+    70% {
+      transform: translate(-50%, -1.5%) scale(0.78);
+    }
     100% {
       transform: translate(-50%, 0) scale(0.78);
     }
@@ -884,6 +928,9 @@
   @keyframes slideDown {
     0% {
       transform: translate(-50%, 0) scale(0.78);
+    }
+    35% {
+      transform: translate(-50%, -1.5%) scale(0.78);
     }
     100% {
       transform: translate(-50%, 100%) scale(0.78);
