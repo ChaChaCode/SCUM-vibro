@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const rankUpNotification = document.getElementById('rankUpNotification');
     const rankNameElement = document.getElementById('rankName');
     const rankRewardElement = document.getElementById('rankReward');
-    const coinValuePerSymbol = 0.005001;
+    const coinValuePerSymbol = 0.001111;
     const maxEnergy = 500;
     const energyPerTap = 1;
     let currentCoinValue = 0;
@@ -114,11 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         if (currentEnergy > 0) {
             processText();
-    
+
             // Используем HapticFeedback при тапе
             if (Telegram.WebApp.HapticFeedback) {
                 Telegram.WebApp.HapticFeedback.impactOccurred('light');
             }
+
             // Увеличиваем яркость при каждом клике
             brightness += 0.1;
             if (brightness > 1) brightness = 1; // Ограничение максимальной яркости
@@ -177,23 +178,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const previousRank = getRank(currentCoinValue - coinValuePerSymbol);
         const rank = getRank(currentCoinValue);
         currentRankElement.textContent = rank.name;
-    
+
         const nextRankIndex = ranks.indexOf(rank) - 1;
         if (nextRankIndex >= 0) {
             nextRankElement.textContent = ranks[nextRankIndex].name;
         } else {
             nextRankElement.textContent = 'MAX';
         }
-    
+
         // Проверка на новый ранг
         if (previousRank.name !== rank.name) {
             showRankUpNotification(rank.name, rank.reward);
             highlightGroupCodePercent();
-    
-            // Используем HapticFeedback при достижении нового ранга
-            if (Telegram.WebApp.HapticFeedback) {
-                Telegram.WebApp.HapticFeedback.notificationOccurred('success');
-            }
         }
     }
 
