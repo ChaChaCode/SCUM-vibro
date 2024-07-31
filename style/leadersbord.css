@@ -627,7 +627,7 @@
 
 @media screen and (max-width: 390px) {
   .frame-section {
-    margin-top: -48px;
+    margin-top: -47px;
     transform: scale(0.85);
   }
   .mainbattons {
@@ -642,7 +642,7 @@
 
 @media screen and (max-width: 375px) {
   .frame-section {
-    margin-top: -57px;
+    margin-top: -56px;
     transform: scale(0.82);
   }
   .mainbattons {
@@ -657,7 +657,7 @@
 
 @media screen and (max-width: 360px) {
   .frame-section {
-    margin-top: -75px;
+    margin-top: -74px;
     transform: scale(0.78);
   }
   .mainbattons {
