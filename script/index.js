@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentEnergy > 0) {
             processText();
             if (navigator.vibrate) {
-                navigator.vibrate(10); // Вибрация длится 50 миллисекунд
+                navigator.vibrate(50); // Вибрация длится 50 миллисекунд
             }
 
             // Увеличиваем яркость при каждом клике
