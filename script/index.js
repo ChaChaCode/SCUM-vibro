@@ -389,10 +389,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Проверка ширины экрана как простое условие
             if (window.innerWidth > 1024) {
                 // Если ширина экрана больше 1024px, считаем это ПК
-                window.location.href = 'pc.html';
+                window.location.href = 'mobile.html';
             } else {
                 // Если ширина экрана меньше или равна 1024px, это мобильное устройство
-                window.location.href = 'mobile.html';
+                window.location.href = 'index.html';
             }
         }
 
