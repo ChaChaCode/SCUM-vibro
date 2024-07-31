@@ -8,3 +8,6 @@ window.Telegram.WebApp.onEvent('themeChanged', function() {
 
 // Вы также можете вызвать expand() сразу после того, как приложение загрузилось
 window.Telegram.WebApp.expand();
+
+ // Включение подтверждения при закрытии
+window.Telegram.WebApp.isClosingConfirmationEnabled = true;
