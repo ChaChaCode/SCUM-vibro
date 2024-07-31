@@ -91,24 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
     energyRestoreLoop(); // Запускаем функцию восстановления энергии
     
 
-    function animateCoinValue(targetValue, duration) {
-        const startValue = currentCoinValue;
-        const startTime = performance.now();
-    
-        function update(timestamp) {
-            const elapsed = timestamp - startTime;
-            const progress = Math.min(elapsed / duration, 1); // Нормализуем прогресс от 0 до 1
-            currentCoinValue = startValue + (targetValue - startValue) * progress;
-            coinElement.textContent = currentCoinValue.toFixed(6);
-            
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            }
-        }
-    
-        requestAnimationFrame(update);
-    }
-    
     function processText() {
         if (currentEnergy <= 0) return; // Если энергии нет, не выполнять действия
     
@@ -136,9 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     updateEnergy();
                 }
     
-                // Плавное изменение значения денег
-                const newCoinValue = currentCoinValue + coinValuePerSymbol;
-                animateCoinValue(newCoinValue, 500); // Анимация длится 500 миллисекунд
+                // Обновление значения коинов без анимации
+                currentCoinValue += coinValuePerSymbol;
+                coinElement.textContent = currentCoinValue.toFixed(6);
     
                 updateRanks();
                 updatePercentage();
@@ -153,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-
 
     function handleTap(event) {
         event.preventDefault();
@@ -384,4 +365,3 @@ document.addEventListener('DOMContentLoaded', function() {
     updateRanks();
     updatePercentage();
 });
-
