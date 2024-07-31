@@ -383,8 +383,8 @@ document.addEventListener('DOMContentLoaded', function() {
     updateEnergy();
     updateRanks();
     updatePercentage();
-});
-        // Функция для определения устройства
+
+            // Функция для определения устройства
         function redirectToAppropriateVersion() {
             // Проверка ширины экрана как простое условие
             if (window.innerWidth > 1024) {
@@ -398,3 +398,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Запуск функции при загрузке страницы
         window.onload = redirectToAppropriateVersion;
+});
+
