@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(brightnessTimeout);
             brightnessTimeout = setTimeout(() => {
                 fadeBrightness();
-            }, 300);
+            }, 100);
         }
     }
 
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(fadeInterval);
             }
             tapTextElement.style.boxShadow = `0 0 24px rgba(0, 255, 148, ${brightness})`;
-        }, 30); // Интервал изменения яркости
+        }, 16.67); // Интервал изменения яркости для 60 FPS
     }
 
     function getRank(coinValue) {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rankUpNotification.classList.remove('hide');
         rankUpNotification.classList.add('show');
 
-        // Через 3 секунды начинаем анимацию скрытия
+        // Через 5 секунд начинаем анимацию скрытия
         setTimeout(() => {
             rankUpNotification.classList.remove('show');
             rankUpNotification.classList.add('hide');
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
             blurryContainer.style.display = "none";
             modalContent.classList.remove("close-animation");
             document.body.style.overflow = "";
-        }, 300);
+        }, 330);
     }
 
     var modal1 = document.getElementById("myModal");
