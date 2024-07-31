@@ -22,5 +22,5 @@ window.Telegram.WebApp.onEvent('themeChanged', function() {
     window.Telegram.WebApp.expand();
 });
 
-// Разворачиваем WebApp сразу после загрузки
+// Вы также можете вызвать expand() сразу после того, как приложение загрузилось
 window.Telegram.WebApp.expand();
