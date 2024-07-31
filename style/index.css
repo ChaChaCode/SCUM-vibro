@@ -1034,7 +1034,7 @@
     }
 }
 .notification {
-  top: 80px;
+  top: 60px;
   left: 50%;
   transform: translateX(-50%); /* Центрирование по горизонтали */
   width: 410px;
