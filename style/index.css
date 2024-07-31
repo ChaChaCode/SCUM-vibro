@@ -959,6 +959,7 @@
   }
 }
 
+
 .modal {
   display: none;
   position: absolute;
@@ -970,7 +971,7 @@
   overflow: hidden;
   backdrop-filter: blur(2px); /* Уменьшите значение */
   -webkit-backdrop-filter: blur(2px); /* Уменьшите значение */
-  transition: opacity 0.33s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 
 }
 
@@ -983,7 +984,7 @@
   border: none;
   padding: 0;
   overflow: hidden;
-  animation: slideUp 0.33s ease-out;
+  animation: slideUp 0.5s ease-out;
 }
 
 .modal-content.boosting-content {
@@ -991,7 +992,7 @@
 }
 
 .modal-content.close-animation {
-  animation: slideDown 0.33s ease-out;
+  animation: slideDown 0.5s ease-out;
 }
 
 .modal-content iframe {
@@ -1019,7 +1020,7 @@
 
 .blur {
   filter: blur(2px); /* Уменьшите значение */
-  transition: filter 0.3s ease;
+  transition: filter 0.5s ease;
 }
 
 @keyframes fadeIn {
@@ -1057,13 +1058,13 @@
 .notification.show {
     opacity: 1;
     pointer-events: auto; /* кликабельно, когда показывается */
-    animation: fadeIn 0.33s ease-out;
+    animation: fadeIn 0.5s ease-out;
 }
 
 .notification.hidden {
     opacity: 0;
     pointer-events: none; /* не кликабельно, когда скрыто */
-    animation: fadeOut 0.33s ease-out;
+    animation: fadeOut 0.5s ease-out;
 }
     .rankName,
     .rankReward{
