@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Используем HapticFeedback при тапе
             if (Telegram.WebApp.HapticFeedback) {
-                Telegram.WebApp.HapticFeedback.impactOccurred('rigid');
+                Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
             }
 
             // Увеличиваем яркость при каждом клике
