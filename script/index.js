@@ -114,7 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         if (currentEnergy > 0) {
             processText();
-
+            if (navigator.vibrate) {
+                navigator.vibrate(50); // Вибрация длится 50 миллисекунд
+            }
             // Используем HapticFeedback при тапе
             if (Telegram.WebApp.HapticFeedback) {
                 Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
