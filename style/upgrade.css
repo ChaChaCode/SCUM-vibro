@@ -701,7 +701,7 @@ anienook-icon {
 @media screen and (max-width: 450px) {
   .frame-parent {
 
-    margin-top: -20px;
+    margin-top: -22px;
 
     transform: scale(0.95); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -719,7 +719,7 @@ anienook-icon {
 
 @media screen and (max-width: 430px) {
   .frame-parent {
-    margin-top: -22px;
+    margin-top: -25px;
 
     transform: scale(0.94); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -737,7 +737,7 @@ anienook-icon {
 
 @media screen and (max-width: 414px) {
   .frame-parent {
-    margin-top: -22px;
+    margin-top: -25px;
     transform: scale(0.94);
   }
   .main-buttons {
@@ -752,7 +752,7 @@ anienook-icon {
 }
 @media screen and (max-width: 412px) {
   .frame-parent {
-    margin-top: -36px;
+    margin-top: -40px;
 
     transform: scale(0.90); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -769,7 +769,7 @@ anienook-icon {
 
 @media screen and (max-width: 390px) {
   .frame-parent {
-    margin-top: -48px;
+    margin-top: -54px;
 
     transform: scale(0.85); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -787,7 +787,7 @@ anienook-icon {
 
 @media screen and (max-width: 375px) {
   .frame-parent {
-    margin-top: -57px;
+    margin-top: -65px;
 
     transform: scale(0.82); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -803,14 +803,12 @@ anienook-icon {
 }
 @media screen and (max-width: 360px) {
   .frame-parent {
-    margin-top: -75px;
+    margin-top: -85px;
 
     transform: scale(0.78); /* Уменьшение масштаба для маленьких экранов */
   }
-  .mainbattons
-  {
+  .mainbattons{
     margin: -20px;
-
     transform: scale(0.78); /* Уменьшение масштаба для маленьких экранов */
   }
   .modal-content {
