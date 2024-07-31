@@ -384,19 +384,19 @@ document.addEventListener('DOMContentLoaded', function() {
     updateRanks();
     updatePercentage();
 
-            // Функция для определения устройства
-        function redirectToAppropriateVersion() {
-            // Проверка ширины экрана как простое условие
-            if (window.innerWidth > 1024) {
-                // Если ширина экрана больше 1024px, считаем это ПК
-                window.location.href = 'mobile.html';
-            } else {
-                // Если ширина экрана меньше или равна 1024px, это мобильное устройство
-                window.location.href = 'index.html';
-            }
-        }
-
-        // Запуск функции при загрузке страницы
-        window.onload = redirectToAppropriateVersion;
+                // Функция для определения устройства
+                function redirectToAppropriateVersion() {
+                    // Проверка ширины экрана как простое условие
+                    if (window.innerWidth > 1024) {
+                        // Если ширина экрана больше 1024px, считаем это ПК
+                        window.location.href = 'mobile.html';
+                    } else {
+                        // Если ширина экрана меньше или равна 1024px, это мобильное устройство
+                        window.location.href = 'index.html';
+                    }
+                }
+        
+                // Запуск функции при загрузке страницы
+                window.onload = redirectToAppropriateVersion;
 });
 
