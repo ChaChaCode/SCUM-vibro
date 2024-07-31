@@ -110,12 +110,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+
     function handleTap(event) {
         event.preventDefault();
         if (currentEnergy > 0) {
             processText();
             if (navigator.vibrate) {
                 navigator.vibrate(50); // Вибрация длится 50 миллисекунд
+            } else {
+                console.log('Вибрация не поддерживается на этом устройстве.');
             }
 
             // Увеличиваем яркость при каждом клике
