@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const rankUpNotification = document.getElementById('rankUpNotification');
     const rankNameElement = document.getElementById('rankName');
     const rankRewardElement = document.getElementById('rankReward');
-    const coinValuePerSymbol = 0.001111;
+    const coinValuePerSymbol = 0.000005;
     const maxEnergy = 500;
     const energyPerTap = 1;
     let currentCoinValue = 0;
@@ -88,10 +88,30 @@ document.addEventListener('DOMContentLoaded', function() {
         restoreEnergy();
         setTimeout(() => requestAnimationFrame(energyRestoreLoop), 2000);
     }
-    energyRestoreLoop();
+    energyRestoreLoop(); // Запускаем функцию восстановления энергии
     
 
+    function animateCoinValue(targetValue, duration) {
+        const startValue = currentCoinValue;
+        const startTime = performance.now();
+    
+        function update(timestamp) {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1); // Нормализуем прогресс от 0 до 1
+            currentCoinValue = startValue + (targetValue - startValue) * progress;
+            coinElement.textContent = currentCoinValue.toFixed(6);
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+    
+        requestAnimationFrame(update);
+    }
+    
     function processText() {
+        if (currentEnergy <= 0) return; // Если энергии нет, не выполнять действия
+    
         while (currentSymbolIndex < tapCodeText.length) {
             if (tapCodeText[currentSymbolIndex] === ' ') {
                 tapTextElement.textContent += ' ';
@@ -103,30 +123,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-
+    
         if (currentSymbolIndex < tapCodeText.length) {
             if (tapCodeText[currentSymbolIndex] !== ' ' && tapCodeText[currentSymbolIndex] !== '█') {
                 tapTextElement.textContent += tapCodeText[currentSymbolIndex];
                 currentSymbolIndex++;
-                currentCoinValue += coinValuePerSymbol;
-                coinElement.textContent = currentCoinValue.toFixed(6);
-                currentEnergy -= energyPerTap;
-                if (currentEnergy < 0) {
-                    currentEnergy = 0;
+                
+                // Списывание энергии только один раз за нажатие
+                if (currentEnergy > 0) {
+                    currentEnergy -= energyPerTap;
+                    if (currentEnergy < 0) currentEnergy = 0;
+                    updateEnergy();
                 }
-                updateEnergy();
+    
+                // Плавное изменение значения денег
+                const newCoinValue = currentCoinValue + coinValuePerSymbol;
+                animateCoinValue(newCoinValue, 500); // Анимация длится 500 миллисекунд
+    
                 updateRanks();
                 updatePercentage();
                 scrollToBottom();
             }
         }
-
+    
         if (currentSymbolIndex >= tapCodeText.length) {
             tapCodeText = getTapCodeText();
             currentSymbolIndex = 0;
             tapTextElement.textContent = '';
         }
     }
+    
+
 
     function handleTap(event) {
         event.preventDefault();
@@ -349,8 +376,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = "./leadersbord.html";
         });
     }
-
-    energyRestoreInterval = setInterval(restoreEnergy, 2000);
 
     // Устанавливаем интервал для обновления линии ранга каждую секунду
     setInterval(updatePercentage, 1000);
