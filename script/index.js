@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация элементов и переменных
     const tapTextElement = document.getElementById('tapText');
     const coinElement = document.querySelector('.mycoin');
     const energyText = document.getElementById('energyText');
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let tapCodeText = '';
     let currentEnergy = maxEnergy;
     let energyRestoreInterval;
-    let brightness = 0.3; // Начальная яркость
+    let brightness = 0.3;
     let brightnessTimeout;
 
     const ranks = [
@@ -49,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function updatePercentage() {
         const rank = getRank(currentCoinValue);
         const nextRankIndex = ranks.indexOf(rank) - 1;
+    
+        yourLevelLine.style.transition = 'width 1.5s ease';
+    
         if (nextRankIndex >= 0) {
             const nextRankMin = ranks[nextRankIndex].min;
             const percentage = ((currentCoinValue - rank.min) / (nextRankMin - rank.min)) * 100;
@@ -61,6 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
             percentageText.textContent = '100%';
         }
     }
+    
+    function updatePercentageLoop() {
+        updatePercentage();
+        requestAnimationFrame(updatePercentageLoop);
+    }
+    updatePercentageLoop();
+    
 
     function updateEnergy() {
         energyText.textContent = `${currentEnergy}/${maxEnergy}`;
@@ -72,6 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
             updateEnergy();
         }
     }
+    
+    function energyRestoreLoop() {
+        restoreEnergy();
+        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 2000);
+    }
+    energyRestoreLoop();
+    
 
     function processText() {
         while (currentSymbolIndex < tapCodeText.length) {
@@ -115,23 +133,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentEnergy > 0) {
             processText();
             if (navigator.vibrate) {
-                navigator.vibrate(50); // Вибрация длится 50 миллисекунд
+                navigator.vibrate(50);
             }
-            // Используем HapticFeedback при тапе
             if (Telegram.WebApp.HapticFeedback) {
                 Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
             }
 
-            // Увеличиваем яркость при каждом клике
             brightness += 0.1;
-            if (brightness > 1) brightness = 1; // Ограничение максимальной яркости
+            if (brightness > 1) brightness = 1;
             tapTextElement.style.boxShadow = `0 0 24px rgba(0, 255, 148, ${brightness})`;
 
-            // Устанавливаем таймаут для уменьшения яркости после прекращения кликов
             clearTimeout(brightnessTimeout);
             brightnessTimeout = setTimeout(() => {
                 fadeBrightness();
-            }, 100);
+            }, 300);
         }
     }
 
@@ -143,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(fadeInterval);
             }
             tapTextElement.style.boxShadow = `0 0 24px rgba(0, 255, 148, ${brightness})`;
-        }, 16.67); // Интервал изменения яркости для 60 FPS
+        }, 16.67);
     }
 
     function getRank(coinValue) {
@@ -164,16 +179,14 @@ document.addEventListener('DOMContentLoaded', function() {
         rankNameElement.textContent = rankName;
         rankRewardElement.textContent = rankReward.toFixed(6);
 
-        // Показываем уведомление
         rankUpNotification.classList.remove('hidden');
         rankUpNotification.classList.remove('hide');
         rankUpNotification.classList.add('show');
 
-        // Через 5 секунд начинаем анимацию скрытия
         setTimeout(() => {
             rankUpNotification.classList.remove('show');
             rankUpNotification.classList.add('hide');
-        }, 5000); // Задержка перед скрытием уведомления
+        }, 5000);
     }
 
     function updateRanks() {
@@ -188,11 +201,13 @@ document.addEventListener('DOMContentLoaded', function() {
             nextRankElement.textContent = 'MAX';
         }
 
-        // Проверка на новый ранг
         if (previousRank.name !== rank.name) {
             showRankUpNotification(rank.name, rank.reward);
-            highlightGroupCodePercent();
+            highlightGroupCodePercent(); // Убедитесь, что функция highlightGroupCodePercent определена
         }
+
+        // Обновляем отображение линии апгрейда после изменения ранга
+        updatePercentage();
     }
 
     function scrollToBottom() {
@@ -296,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         var blurElements = document.querySelectorAll('.blur');
         blurElements.forEach(function(el) {
-            el.style.filter = 'none'; // Убираем размытие после загрузки
+            el.style.filter = 'none';
         });
     });
 
@@ -323,9 +338,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var taskBattonContainer = document.getElementById("TaskBattonContainer");
     if (taskBattonContainer) {
-      taskBattonContainer.addEventListener("click", function (e) {
-          window.location.href = "./task.html";
-      });
+        taskBattonContainer.addEventListener("click", function (e) {
+            window.location.href = "./task.html";
+        });
     }
 
     var topStarsButtonContainer = document.getElementById("TopStarsBattonContainer");
@@ -336,6 +351,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     energyRestoreInterval = setInterval(restoreEnergy, 2000);
+
+    // Устанавливаем интервал для обновления линии ранга каждую секунду
+    setInterval(updatePercentage, 1000);
+
     updateEnergy();
     updateRanks();
     updatePercentage();
