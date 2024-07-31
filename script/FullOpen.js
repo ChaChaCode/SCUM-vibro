@@ -1,13 +1,14 @@
-// app.js
-window.Telegram.WebApp.ready();
+document.addEventListener('DOMContentLoaded', function() {
+    // Проверяем, что WebApp загружен
+    window.Telegram.WebApp.ready();
 
-window.Telegram.WebApp.onEvent('themeChanged', function() {
+    // Включение подтверждения при закрытии
+    window.Telegram.WebApp.isClosingConfirmationEnabled = true;
+
+    window.Telegram.WebApp.onEvent('themeChanged', function() {
     // После того, как WebApp готов, разверните его
     window.Telegram.WebApp.expand();
+        
+    // Разворачиваем WebApp на весь экран
+    window.Telegram.WebApp.expand();
 });
-
-// Вы также можете вызвать expand() сразу после того, как приложение загрузилось
-window.Telegram.WebApp.expand();
-
- // Включение подтверждения при закрытии
-window.Telegram.WebApp.isClosingConfirmationEnabled = true;
