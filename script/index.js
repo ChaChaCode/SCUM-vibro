@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
             blurryContainer.style.display = "none";
             modalContent.classList.remove("close-animation");
             document.body.style.overflow = "";
-        }, 500);
+        }, 300);
     }
 
     var modal1 = document.getElementById("myModal");
