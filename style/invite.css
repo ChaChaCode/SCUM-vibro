@@ -785,7 +785,7 @@
 @media screen and (max-width: 450px) {
   .frame-section {
 
-    margin-top: -20px;
+    margin-top: -22px;
 
     transform: scale(0.95); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -799,7 +799,7 @@
 
 @media screen and (max-width: 430px) {
   .frame-section {
-    margin-top: -22px;
+    margin-top: -24px;
 
     transform: scale(0.94); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -812,7 +812,7 @@
 }
 @media screen and (max-width: 414px) {
   .frame-section {
-    margin-top: -22px;
+    margin-top: -24px;
     transform: scale(0.94);
   }
   .main-buttons {
@@ -824,7 +824,7 @@
 
 @media screen and (max-width: 412px) {
   .frame-section {
-    margin-top: -36px;
+    margin-top: -39px;
 
     transform: scale(0.90); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -838,7 +838,7 @@
 
 @media screen and (max-width: 390px) {
   .frame-section {
-    margin-top: -48px;
+    margin-top: -52px;
 
     transform: scale(0.85); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -852,7 +852,7 @@
 
 @media screen and (max-width: 375px) {
   .frame-section {
-    margin-top: -57px;
+    margin-top: -62px;
 
     transform: scale(0.82); /* Уменьшение масштаба для маленьких экранов */
   }
@@ -864,14 +864,12 @@
 }
 @media screen and (max-width: 360px) {
   .frame-section {
-    margin-top: -75px;
+    margin-top: -82px;
 
     transform: scale(0.78); /* Уменьшение масштаба для маленьких экранов */
   }
-  .mainbattons
-  {
+  .mainbattons{
     margin: -20px;
-
     transform: scale(0.78); /* Уменьшение масштаба для маленьких экранов */
   }
 }
