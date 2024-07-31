@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Разворачиваем WebApp на весь экран
     window.Telegram.WebApp.expand();
 
-    // Подписка на событие themeChanged, если это необходимо
+    // Подписка на событие themeChanged
     window.Telegram.WebApp.onEvent('themeChanged', function() {
         // Обработка изменения темы, если нужно
+        // Например, можно повторно развернуть WebApp на весь экран
+        window.Telegram.WebApp.expand();
     });
 });
