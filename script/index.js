@@ -273,11 +273,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('hide');
         modal.classList.add('show');
 
-        // Запускаем анимацию открытия с использованием GSAP
-        gsap.fromTo(modalContent, 
-            { opacity: 0, y: 500 }, 
-            { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
-        );
+        // Запускаем анимацию открытия
+        modalContent.style.transform = 'translateY(0px)';
+        modalContent.style.opacity = '1';
 
         // Обновляем размер модального окна
         updateModalSize(modalContent);
@@ -286,21 +284,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
 
-        // Запускаем анимацию закрытия с использованием GSAP
-        gsap.to(modalContent, { 
-            opacity: 0, 
-            y: 500, 
-            duration: 0.3, 
-            ease: 'power2.out', 
-            onComplete: function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = "";
-            }
-        });
+        // Запускаем анимацию закрытия
+        modalContent.style.transform = 'translateY(500px)';
+        modalContent.style.opacity = '0';
 
         // Скрываем модальное окно после завершения анимации
-        modal.classList.remove('show');
-        modal.classList.add('hide');
+        setTimeout(function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = "";
+        }, 200); // Соответствует длительности transition
     }
 
     // Привязка обработчиков событий к кнопкам и модальным окнам
@@ -330,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
     
 
     // Обработка событий загрузки страницы и других действий
