@@ -35,20 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'BEGINNER', min: 0.000000, reward: 0.000050 }
     ];
 
-        // Получаем User-Agent
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-    // Проверяем, является ли устройство мобильным
-    const isMobile = /android|iphone|ipad|ipod|opera mini|iemobile|wpdesktop/i.test(userAgent);
-
-    if (!isMobile) {
-        // Если не мобильное устройство, перенаправляем на другой файл или сайт
-        window.location.href = "mobile.html"; // Укажите путь к нужному файлу или странице
-    } else {
-        // Если мобильное устройство, продолжаем загрузку текущего веб-приложения
-        console.log("Мобильное устройство обнаружено");
-    }
-    
     let bonusesReceived = {};
     ranks.forEach(rank => bonusesReceived[rank.name] = false);
 
@@ -64,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function updatePercentage() {
         const rank = getRank(currentCoinValue);
         const nextRankIndex = ranks.indexOf(rank) - 1;
-    
+
         yourLevelLine.style.transition = 'width 1.5s ease';
-    
+
         if (nextRankIndex >= 0) {
             const nextRankMin = ranks[nextRankIndex].min;
             const percentage = ((currentCoinValue - rank.min) / (nextRankMin - rank.min)) * 100;
@@ -79,13 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
             percentageText.textContent = '100%';
         }
     }
-    
+
     function updatePercentageLoop() {
         updatePercentage();
         requestAnimationFrame(updatePercentageLoop);
     }
     updatePercentageLoop();
-    
 
     function updateEnergy() {
         energyText.textContent = `${currentEnergy}/${maxEnergy}`;
@@ -97,17 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
             updateEnergy();
         }
     }
-    
+
     function energyRestoreLoop() {
         restoreEnergy();
         setTimeout(() => requestAnimationFrame(energyRestoreLoop), 2000);
     }
     energyRestoreLoop(); // Запускаем функцию восстановления энергии
-    
 
     function processText() {
         if (currentEnergy <= 0) return; // Если энергии нет, не выполнять действия
-    
+
         while (currentSymbolIndex < tapCodeText.length) {
             if (tapCodeText[currentSymbolIndex] === ' ') {
                 tapTextElement.textContent += ' ';
@@ -119,36 +103,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-    
+
         if (currentSymbolIndex < tapCodeText.length) {
             if (tapCodeText[currentSymbolIndex] !== ' ' && tapCodeText[currentSymbolIndex] !== '█') {
                 tapTextElement.textContent += tapCodeText[currentSymbolIndex];
                 currentSymbolIndex++;
-                
+
                 // Списывание энергии только один раз за нажатие
                 if (currentEnergy > 0) {
                     currentEnergy -= energyPerTap;
                     if (currentEnergy < 0) currentEnergy = 0;
                     updateEnergy();
                 }
-    
+
                 // Обновление значения коинов без анимации
                 currentCoinValue += coinValuePerSymbol;
                 coinElement.textContent = currentCoinValue.toFixed(6);
-    
+
                 updateRanks();
                 updatePercentage();
                 scrollToBottom();
             }
         }
-    
+
         if (currentSymbolIndex >= tapCodeText.length) {
             tapCodeText = getTapCodeText();
             currentSymbolIndex = 0;
             tapTextElement.textContent = '';
         }
     }
-    
 
     function handleTap(event) {
         event.preventDefault();
@@ -285,26 +268,45 @@ document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById(modalId);
         var modalContent = modal.querySelector(".modal-content");
 
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden";
-        blurryContainer.style.display = "block";
-        updateModalSize(modalContent);
+        // Убираем класс hide и добавляем класс show
+        modal.style.display = 'block'; // Показываем модальное окно
+        modal.classList.remove('hide');
+        modal.classList.add('show');
+
+        // Сбрасываем и запускаем анимацию открытия
+        setTimeout(function() {
+            modalContent.classList.remove('close-animation');
+            modalContent.classList.add('open-animation');
+            updateModalSize(modalContent);
+        }, 10); // Небольшая задержка для активации CSS-анимации
     }
 
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
-        modalContent.classList.add("close-animation");
+
+        // Убираем класс show и добавляем класс hide
+        modal.classList.remove('show');
+        modal.classList.add('hide');
+
+        // Запускаем анимацию закрытия
+        modalContent.classList.remove('open-animation');
+        modalContent.classList.add('close-animation');
+
+        // После завершения анимации скрываем модальное окно
         setTimeout(function() {
-            modal.style.display = "none";
-            blurryContainer.style.display = "none";
-            modalContent.classList.remove("close-animation");
+            modal.style.display = 'none';
             document.body.style.overflow = "";
-        }, 300);
+        }, 300); // Длительность должна совпадать с transition в CSS
+
+        // Сбрасываем анимацию для следующего открытия
+        setTimeout(function() {
+            modalContent.classList.remove('close-animation');
+        }, 300); // Длительность анимации закрытия
     }
 
+    // Привязка обработчиков событий к кнопкам и модальным окнам
     var modal1 = document.getElementById("myModal");
     var modal2 = document.getElementById("boosting");
-    var blurryContainer = document.getElementById("blurryContainer");
 
     var buttons = [
         { buttonId: "levelbuttonContainer", modalId: "myModal" },
@@ -330,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Обработка событий загрузки страницы и других действий
     window.addEventListener('load', function() {
         var blurElements = document.querySelectorAll('.blur');
         blurElements.forEach(function(el) {
