@@ -727,217 +727,6 @@
   }
 }
 
-/* Анимации */
-@media screen and (min-width: 450px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(1);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(1);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(1);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(1);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(1);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(1);
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.95);
-      animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.95);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.95);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.95);
-      animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.95);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.95);
-    }
-  }
-}
-
-@media screen and (max-width: 430px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.94);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.94);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.94);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.94);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.94);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.94);
-    }
-  }
-}
-
-@media screen and (max-width: 414px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-  }
-}
-
-@media screen and (max-width: 412px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-  }
-}
-
-@media screen and (max-width: 390px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.85);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.85);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.85);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.85);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.85);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.85);
-    }
-  }
-}
-
-@media screen and (max-width: 375px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.82);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.82);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.82);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.82);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.82);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.82);
-    }
-  }
-}
-
-@media screen and (max-width: 360px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.78);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.78);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.78);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.78);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.78);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.78);
-    }
-  }
-}
-
 /* CSS для модального окна */
 @keyframes pulse {
   0% {
@@ -956,9 +745,9 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
 }
-
+/* Основные стили модального окна */
 .modal {
-  display: none;
+  display: none; /* Модальное окно изначально скрыто */
   position: absolute;
   z-index: 5000;
   left: 0;
@@ -966,30 +755,44 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  backdrop-filter: blur(2px); /* Уменьшите значение */
-  -webkit-backdrop-filter: blur(2px); /* Уменьшите значение */
-  transition: opacity 0.3s ease-in-out;
-
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0; /* Начальная непрозрачность */
+  transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
 }
 
+.modal.show {
+  display: block; /* Показываем модальное окно */
+  opacity: 1; /* Делаем его видимым */
+}
+
+.modal.hide {
+  opacity: 0; /* Делаем его невидимым */
+}
+
+/* Классы для анимаций открытия и закрытия */
 .modal-content {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(100%); /* Начальное положение вне экрана */
   width: 450px;
   height: 600px;
   border: none;
   padding: 0;
   overflow: hidden;
-  animation: slideUp 0.3s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
-.modal-content.boosting-content {
-  height: 420px; /* Установка высоты на 400px для boosting модального окна */
+.modal-content.open-animation {
+  transform: translateX(-50%) translateY(0); /* Конечное положение при открытии */
 }
 
 .modal-content.close-animation {
-  animation: slideDown 0.3s ease-out;
+  transform: translateX(-50%) translateY(100%); /* Положение для закрытия */
+}
+
+.modal-content.boosting-content {
+  height: 420px;
 }
 
 .modal-content iframe {
@@ -1016,22 +819,14 @@
 }
 
 .blur {
-  filter: blur(2px); /* Уменьшите значение */
+  filter: blur(2px);
   transition: filter 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 .notification {
   top: 60px;
   left: 50%;
-  transform: translateX(-50%); /* Центрирование по горизонтали */
+  transform: translateX(-50%);
   width: 410px;
   height: 60px;
   max-width: 410px;
@@ -1042,38 +837,58 @@
   border-radius: 16px;
   box-shadow: 0 0 12.27px rgba(21, 226, 140, 0.3);
   z-index: 1000;
-  opacity: 0; /* по умолчанию скрыто */
-  transition: opacity 0.3s ease; /* Плавное изменение прозрачности */
-  pointer-events: none; /* не кликабельно по умолчанию */
-  display: flex; /* Используем Flexbox */
-  align-items: center; /* Вертикальное выравнивание по центру */
-  justify-content: center; /* Горизонтальное выравнивание по центру */
-  text-align: center; /* Выравнивание текста по центру */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-
 .notification.show {
-    opacity: 1;
-    pointer-events: auto; /* кликабельно, когда показывается */
-    animation: fadeIn 0.3s ease-out;
+  opacity: 1;
+  pointer-events: auto;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .notification.hidden {
-    opacity: 0;
-    pointer-events: none; /* не кликабельно, когда скрыто */
-    animation: fadeOut 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  animation: fadeOut 0.3s ease-out;
 }
-    .rankName,
-    .rankReward{
-        color: #20d589;
-        font-size: 16px;
-    }
-    .notification-text{
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 16px;
-    }
 
-    .hidden {
-        display: none;
-    }
+.rankName,
+.rankReward {
+  color: #20d589;
+  font-size: 16px;
+}
+
+.notification-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
