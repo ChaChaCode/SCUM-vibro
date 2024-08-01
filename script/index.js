@@ -267,59 +267,58 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         var modalContent = modal.querySelector(".modal-content");
-    
+
         // Показываем модальное окно
-        modal.style.display = 'block'; 
+        modal.style.display = 'block';
         modal.classList.remove('hide');
         modal.classList.add('show');
-    
-        // Запускаем анимацию открытия
-        modalContent.classList.remove('close-animation');
-        modalContent.classList.add('open-animation');
-    
+
+        // Запускаем анимацию открытия с использованием GSAP
+        gsap.fromTo(modalContent, 
+            { opacity: 0, y: 500 }, 
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+        );
+
         // Обновляем размер модального окна
         updateModalSize(modalContent);
     }
-    
+
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
-    
-        // Запускаем анимацию закрытия
+
+        // Запускаем анимацию закрытия с использованием GSAP
+        gsap.to(modalContent, { 
+            opacity: 0, 
+            y: 500, 
+            duration: 0.5, 
+            ease: 'power2.out', 
+            onComplete: function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = "";
+            }
+        });
+
+        // Скрываем модальное окно после завершения анимации
         modal.classList.remove('show');
         modal.classList.add('hide');
-        modalContent.classList.remove('open-animation');
-        modalContent.classList.add('close-animation');
-    
-        // После завершения анимации скрываем модальное окно
-        setTimeout(function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = "";
-        }, 300); // Длительность должна совпадать с animation в CSS
-    
-        // Сбрасываем анимацию для следующего открытия
-        setTimeout(function() {
-            modalContent.classList.remove('close-animation');
-        }, 300); // Длительность анимации закрытия
     }
-    
-    
-    
+
     // Привязка обработчиков событий к кнопкам и модальным окнам
     var modal1 = document.getElementById("myModal");
     var modal2 = document.getElementById("boosting");
-    
+
     var buttons = [
         { buttonId: "levelbuttonContainer", modalId: "myModal" },
         { buttonId: "boostingButton", modalId: "boosting" }
     ];
-    
+
     buttons.forEach(function(entry) {
         var btn = document.getElementById(entry.buttonId);
         btn.onclick = function() {
             openModal(entry.modalId);
         };
     });
-    
+
     document.querySelectorAll(".modal").forEach(function(modal) {
         var span = modal.querySelector(".close");
         span.onclick = function() {
