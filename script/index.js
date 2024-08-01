@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Запускаем анимацию открытия с использованием GSAP
         gsap.fromTo(modalContent, 
             { opacity: 0, y: 500 }, 
-            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
+            { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
         );
 
         // Обновляем размер модального окна
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.to(modalContent, { 
             opacity: 0, 
             y: 500, 
-            duration: 0.5, 
+            duration: 0.3, 
             ease: 'power2.out', 
             onComplete: function() {
                 modal.style.display = 'none';
