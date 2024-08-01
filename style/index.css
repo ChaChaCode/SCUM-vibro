@@ -957,30 +957,27 @@
 }
 
 
-/* Основные стили модального окна */
 .modal {
-  display: none; /* Модальное окно изначально скрыто */
+  display: none;
   position: absolute;
   z-index: 5000;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
   backdrop-filter: blur(2px);
-  transition: 0.3s; /* Плавное изменение прозрачности */
+  transition: opacity 0.2s ease-out; /* Уменьшенная длительность */
+  will-change: opacity;
 }
 
 .modal.show {
   display: block;
-  opacity: 1; /* Делаем его видимым */
+  opacity: 1;
 }
 
 .modal.hide {
   display: none;
-  opacity: 0; /* Делаем его невидимым */
+  opacity: 0;
 }
 
-/* Классы для анимаций открытия и закрытия */
 .modal-content {
   position: absolute;
   left: 50%;
@@ -988,30 +985,15 @@
   height: 600px;
   border: none;
   padding: 0;
-}
-
-.modal-content.open-animation {
-  animation: openAnimation 0.3s ease-out forwards;
-}
-
-.modal-content.close-animation {
-  animation: closeAnimation 0.3s ease-out forwards;
+  transform: translateX(-50%);
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Уменьшенная длительность */
+  will-change: transform, opacity;
 }
 
 .modal-content.boosting-content {
   height: 420px;
 }
 
-.modal-content iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  overflow: hidden;
-}
-
-.close {
-  display: none;
-}
 
 .blurry-container {
   position: absolute;
@@ -1023,11 +1005,6 @@
   overflow: hidden;
   display: none;
   z-index: 4999;
-}
-
-.blur {
-  filter: blur(2px);
-  transition: filter 0.3s ease;
 }
 
 .notification {
@@ -1045,9 +1022,9 @@
   box-shadow: 0 0 12.27px rgba(21, 226, 140, 0.3);
   z-index: 1000;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease-out; /* Уменьшенная длительность */
+  will-change: opacity;
   pointer-events: none;
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -1056,13 +1033,11 @@
 .notification.show {
   opacity: 1;
   pointer-events: auto;
-  animation: fadeIn 0.3s ease-out;
 }
 
 .notification.hidden {
   opacity: 0;
   pointer-events: none;
-  animation: fadeOut 0.3s ease-out;
 }
 
 .rankName,
@@ -1076,4 +1051,3 @@
   padding-right: 10px;
   font-size: 16px;
 }
-
