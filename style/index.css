@@ -737,8 +737,9 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  backdrop-filter: blur(2px);
-  transition: opacity 0.2s ease-out; /* Уменьшенная длительность */
+  backdrop-filter: blur(3px); /* Начальный эффект размытия */
+  -webkit-backdrop-filter: blur(3px); /* Поддержка для WebKit-браузеров */
+  transition: opacity 0.1s ease-out; /* Уменьшенная длительность */
 }
 
 .modal.show {
@@ -758,6 +759,10 @@
   height: 600px;
   border: none;
   padding: 0;
+}
+.blur {
+  filter: blur(4px); /* Эффект размытия */
+  transition: filter 0.3s ease; /* Плавное снятие размытия */
 }
 
 .modal-content.boosting-content {
