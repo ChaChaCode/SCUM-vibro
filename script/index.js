@@ -267,18 +267,17 @@ document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById(modalId);
         var modalContent = modal.querySelector(".modal-content");
     
-        // Показываем модальное окно с задержкой для анимации размытия
-        modal.style.display = 'block';
-        requestAnimationFrame(() => {
-            modal.classList.remove('hide');
-            modal.classList.add('show');
-        });
-    
-        // Запускаем анимацию открытия с использованием GSAP
-        gsap.fromTo(modalContent, 
-            { opacity: 0, y: 500 }, 
-            { opacity: 1, y: 0, duration: 0.3, ease: 'power3.inOut' }
-        );
+        if (modal) {
+            modal.style.display = "block";
+            gsap.fromTo(modal, 
+                { opacity: 0 }, 
+                { opacity: 1, duration: 0.3 }
+            );
+            gsap.fromTo(modalContent, 
+                { opacity: 0, y: 500 }, 
+                { opacity: 1, y: 0, duration: 0.3, ease: 'power3.inOut' }
+            );
+        }
     
         // Обновляем размер модального окна
         updateModalSize(modalContent);
@@ -287,21 +286,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
     
-        // Запускаем анимацию закрытия с использованием GSAP
-        gsap.to(modalContent, { 
-            opacity: 0, 
-            y: 500, 
-            duration: 0.3, 
-            ease: 'power3.inOut', 
-            onComplete: function() {
-                modal.classList.remove('show');
-                modal.classList.add('hide');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = "";
-                }, 300); // Задержка для завершения CSS-перехода
-            }
-        });
+        if (modal) {
+            gsap.to(modalContent, 
+                { opacity: 0, y: 500, duration: 0.3, ease: 'power3.inOut', onComplete: function() {
+                    modal.style.display = "none";
+                } }
+            );
+            gsap.to(modal, 
+                { opacity: 0, duration: 0.3 }
+            );
+        }
     }
     
     // Привязка обработчиков событий к кнопкам и модальным окнам
