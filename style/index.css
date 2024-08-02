@@ -727,255 +727,28 @@
   }
 }
 
-/* CSS для модального окна */
-@keyframes pulse {
-  0% {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  100% {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* Для экранов шириной 450px и больше */
-@media screen and (min-width: 450px) {
-  @keyframes openAnimation {
-    from {
-      transform: translateX(-50%) translateY(100%);
-    }
-    to {
-      transform: translateX(-50%) translateY(0);
-    }
-  }
-
-  @keyframes closeAnimation {
-    from {
-      transform: translateX(-50%) translateY(0);
-    }
-    to {
-      transform: translateX(-50%) translateY(100%);
-    }
-  }
-}
-
-/* Для экранов шириной до 450px */
-@media screen and (max-width: 450px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.95);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.95);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.95);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.95);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.95);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.95);
-    }
-  }
-}
-
-/* Для экранов шириной до 430px */
-@media screen and (max-width: 430px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.94);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.94);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.94);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.94);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.94);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.94);
-    }
-  }
-}
-
-/* Для экранов шириной до 414px */
-@media screen and (max-width: 414px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.90);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.90);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.90);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.90);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.90);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.90);
-    }
-  }
-}
-
-/* Для экранов шириной до 412px */
-@media screen and (max-width: 412px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.90);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.90);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.90);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.90);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.90);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.90);
-    }
-  }
-}
-
-/* Для экранов шириной до 390px */
-@media screen and (max-width: 390px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.85);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.85);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.85);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.85);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.85);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.85);
-    }
-  }
-}
-
-/* Для экранов шириной до 375px */
-@media screen and (max-width: 375px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.82);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.82);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.82);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.82);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.82);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.82);
-    }
-  }
-}
-
-/* Для экранов шириной до 360px */
-@media screen and (max-width: 360px) {
-  @keyframes openAnimation {
-    0% {
-      transform: translateX(-50%) translateY(100%) scale(0.78);
-    }
-    70% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.78);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scale(0.78);
-    }
-  }
-
-  @keyframes closeAnimation {
-    0% {
-      transform: translateX(-50%) translateY(0) scale(0.78);
-    }
-    35% {
-      transform: translateX(-50%) translateY(-1.5%) scale(0.78);
-    }
-    100% {
-      transform: translateX(-50%) translateY(100%) scale(0.78);
-    }
-  }
-}
-
 
 .modal {
-  display: none;
+  display: none; /* Модальное окно изначально скрыто */
   position: absolute;
   z-index: 5000;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
   backdrop-filter: blur(2px);
   transition: opacity 0.2s ease-out; /* Уменьшенная длительность */
-  will-change: opacity;
 }
 
 .modal.show {
   display: block;
-  opacity: 1;
+  opacity: 1; /* Делаем его видимым */
 }
 
 .modal.hide {
   display: none;
-  opacity: 0;
+  opacity: 0; /* Делаем его невидимым */
 }
 
 .modal-content {
@@ -985,19 +758,25 @@
   height: 600px;
   border: none;
   padding: 0;
-  transform: translateX(-50%);
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Уменьшенная длительность */
-  will-change: transform, opacity;
 }
 
 .modal-content.boosting-content {
   height: 420px;
 }
 
+.modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  overflow: hidden;
+}
 
+.close {
+  display: none;
+}
 .blurry-container {
   position: absolute;
-  top: 0;
+  top: 20;
   left: 0;
   width: 100%;
   height: 100%;
@@ -1006,6 +785,7 @@
   display: none;
   z-index: 4999;
 }
+
 
 .notification {
   top: 60px;
@@ -1022,9 +802,9 @@
   box-shadow: 0 0 12.27px rgba(21, 226, 140, 0.3);
   z-index: 1000;
   opacity: 0;
-  transition: opacity 0.3s ease-out; /* Уменьшенная длительность */
-  will-change: opacity;
+  transition: opacity 0.3s ease;
   pointer-events: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -1033,11 +813,13 @@
 .notification.show {
   opacity: 1;
   pointer-events: auto;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .notification.hidden {
   opacity: 0;
   pointer-events: none;
+  animation: fadeOut 0.3s ease-out;
 }
 
 .rankName,
@@ -1051,3 +833,4 @@
   padding-right: 10px;
   font-size: 16px;
 }
+
