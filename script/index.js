@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSymbolIndex = 0;
     let tapCodeText = '';
     let currentEnergy = maxEnergy;
-    let energyRestoreInterval;
     let brightness = 0.3;
     let brightnessTimeout;
 
@@ -85,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function energyRestoreLoop() {
         restoreEnergy();
-        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 2000);
+        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 1000);
     }
     energyRestoreLoop(); // Запускаем функцию восстановления энергии
 
@@ -267,50 +266,60 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         var modalContent = modal.querySelector(".modal-content");
-
-        // Показываем модальное окно
+    
+        // Показываем модальное окно с задержкой для анимации размытия
         modal.style.display = 'block';
-        modal.classList.remove('hide');
-        modal.classList.add('show');
-
-        // Запускаем анимацию открытия
-        modalContent.style.transform = 'translateY(0px)';
-        modalContent.style.opacity = '1';
-
+        requestAnimationFrame(() => {
+            modal.classList.remove('hide');
+            modal.classList.add('show');
+        });
+    
+        // Запускаем анимацию открытия с использованием GSAP
+        gsap.fromTo(modalContent, 
+            { opacity: 0, y: 500 }, 
+            { opacity: 1, y: 0, duration: 0.3, ease: 'power3.inOut' }
+        );
+    
         // Обновляем размер модального окна
         updateModalSize(modalContent);
     }
-
+    
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
-
-        // Запускаем анимацию закрытия
-        modalContent.style.transform = 'translateY(500px)';
-        modalContent.style.opacity = '0';
-
-        // Скрываем модальное окно после завершения анимации
-        setTimeout(function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = "";
-        }, 200); // Соответствует длительности transition
+    
+        // Запускаем анимацию закрытия с использованием GSAP
+        gsap.to(modalContent, { 
+            opacity: 0, 
+            y: 500, 
+            duration: 0.3, 
+            ease: 'power3.inOut', 
+            onComplete: function() {
+                modal.classList.remove('show');
+                modal.classList.add('hide');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = "";
+                }, 300); // Задержка для завершения CSS-перехода
+            }
+        });
     }
-
+    
     // Привязка обработчиков событий к кнопкам и модальным окнам
     var modal1 = document.getElementById("myModal");
     var modal2 = document.getElementById("boosting");
-
+    
     var buttons = [
         { buttonId: "levelbuttonContainer", modalId: "myModal" },
         { buttonId: "boostingButton", modalId: "boosting" }
     ];
-
+    
     buttons.forEach(function(entry) {
         var btn = document.getElementById(entry.buttonId);
         btn.onclick = function() {
             openModal(entry.modalId);
         };
     });
-
+    
     document.querySelectorAll(".modal").forEach(function(modal) {
         var span = modal.querySelector(".close");
         span.onclick = function() {
@@ -322,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
+    
     
 
     // Обработка событий загрузки страницы и других действий
