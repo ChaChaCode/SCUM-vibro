@@ -817,267 +817,42 @@ anienook-icon {
   }
 }
 
-/* Анимации */
-
-@media screen and (min-width: 450px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(1);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(1);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(1);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(1);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(1);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(1);
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.95);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.95);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.95);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.95);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.95);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.95);
-    }
-  }
-}
-
-@media screen and (max-width: 430px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.94);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.94);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.94);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.94);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.94);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.94);
-    }
-  }
-}
-
-@media screen and (max-width: 414px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-  }
-}
-
-@media screen and (max-width: 412px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.90);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.90);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.90);
-    }
-  }
-}
-
-@media screen and (max-width: 390px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.85);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.85);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.85);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.85);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.85);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.85);
-    }
-  }
-}
-
-@media screen and (max-width: 375px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.82);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.82);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.82);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.82);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.82);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.82);
-    }
-  }
-}
-
-@media screen and (max-width: 360px) {
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%) scale(0.78);
-    }
-    70% {
-      transform: translate(-50%, -1.5%) scale(0.78);
-    }
-    100% {
-      transform: translate(-50%, 0) scale(0.78);
-    }
-  }
-
-  @keyframes slideDown {
-    0% {
-      transform: translate(-50%, 0) scale(0.78);
-    }
-    35% {
-      transform: translate(-50%, -1.5%) scale(0.78);
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.78);
-    }
-  }
-}
-
-@keyframes pulse {
-  0% {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  100% {
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-}
 
 .modal {
-display: none;
-position: fixed;
-z-index: 5000;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-overflow: auto;
-backdrop-filter: blur(5px); /* Начальный эффект размытия */
--webkit-backdrop-filter: blur(5px); /* Поддержка для WebKit-браузеров */
-background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный фон с размытие */
-transition: opacity 0.5s ease-in-out;
-overflow: hidden; /* Отключаем скролл для модального окна */
-animation: pulse 3s infinite; /* Применение анимации пульсации */
+  display: none; /* Модальное окно изначально скрыто */
+  position: absolute;
+  z-index: 5000;
+  left: 0;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  backdrop-filter: blur(3px); /* Начальный эффект размытия */
+  -webkit-backdrop-filter: blur(3px); /* Поддержка для WebKit-браузеров */
+  transition: opacity 0.1s ease-out; /* Уменьшенная длительность */
+}
+
+.modal.show {
+  display: block;
+  opacity: 1; /* Делаем его видимым */
+}
+
+.modal.hide {
+  display: none;
+  opacity: 0; /* Делаем его невидимым */
 }
 
 .modal-content {
-overflow: hidden; /* Отключаем скролл внутри модального окна */
   position: absolute;
-  bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
   width: 450px;
   height: 350px;
   border: none;
-  background: transparent;
   padding: 0;
-  animation: slideUp 0.33s ease-in-out;
 }
 
 .modal-content.close-animation {
-  animation: slideDown 0.33s ease-in-out;
+  animation: slideDown 0.3s ease-in-out;
 }
 
 .close {
