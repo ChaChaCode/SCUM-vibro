@@ -155,20 +155,23 @@
   z-index: 1;
 }
 
-.elittaskblock{
-  border-radius: var(--br-base);
-  box-sizing: border-box;
-  
+.elittaskblock-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
 }
+
 .elittaskblock {
-  flex: 1;
-  border: 1px solid #54258a;
+  position: relative;
+  border-left: 1px solid #54258a;
+  border-right: 1px solid #54258a;
   overflow-x: auto;
   flex-direction: row;
-  padding: 9.5px 0;
+  padding: 10px 0;
   gap: 19px;
   z-index: 1;
 }
+
 
 
   .elittaskblock::-webkit-scrollbar {
@@ -192,6 +195,7 @@
   max-width: 100%;
 }
 .elittaskblock-wrapper {
+  border-radius: 16px;
   margin-left: 10px;
   width: 390px;
   height: 152px;
