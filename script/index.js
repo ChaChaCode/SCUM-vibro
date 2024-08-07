@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentEnergy > 0) {
             processText();
             if (navigator.vibrate) {
-                navigator.vibrate([50, 100, 150, 200, 250]);
+                navigator.vibrate([10]);
             }
             if (Telegram.WebApp.HapticFeedback) {
                 Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
