@@ -8,16 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Разворачиваем WebApp на весь экран
     window.Telegram.WebApp.expand();
 
-    // Устанавливаем цвет фона заголовка
-    window.Telegram.WebApp.setHeaderColor('bg_color', '#ff5733'); // Замените '#ff5733' на нужный вам цвет
+    // Функция для установки цвета заголовка в зависимости от фона приложения
+    function setHeaderColor() {
+        // Предполагаем, что цвет фона установлен для элемента с id 'app-background'
+        var appBackgroundColor = window.getComputedStyle(document.getElementById('app-background')).backgroundColor;
+        // Устанавливаем цвет заголовка
+        window.Telegram.WebApp.setHeaderColor('bg_color', appBackgroundColor);
+    }
+
+    // Устанавливаем цвет заголовка при загрузке страницы
+    setHeaderColor();
 
     // Подписка на событие themeChanged
     window.Telegram.WebApp.onEvent('themeChanged', function() {
-        // Обработка изменения темы, если нужно
-        // Например, можно повторно развернуть WebApp на весь экран
+        // Обработка изменения темы
         window.Telegram.WebApp.expand();
-
-        // Можно также обновить цвет заголовка при изменении темы, если нужно
-        window.Telegram.WebApp.setHeaderColor('bg_color', '#ff5733'); // Замените '#ff5733' на нужный вам цвет
+        // Обновляем цвет заголовка при изменении темы
+        setHeaderColor();
     });
 });
