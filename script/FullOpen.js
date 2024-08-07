@@ -8,22 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Разворачиваем WebApp на весь экран
     window.Telegram.WebApp.expand();
 
-    // Функция для установки цвета заголовка
-    function setHeaderColor() {
-        // Получаем цвет заголовка из CSS переменной
-        var headerBgColor = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-header-bg-color').trim();
-        // Устанавливаем цвет заголовка
-        window.Telegram.WebApp.setHeaderColor('bg_color', headerBgColor);
-    }
-
-    // Устанавливаем цвет заголовка при загрузке страницы
-    setHeaderColor();
+    // Устанавливаем цвет фона заголовка
+    window.Telegram.WebApp.setHeaderColor('#ff5733'); // Пример цвета
 
     // Подписка на событие themeChanged
     window.Telegram.WebApp.onEvent('themeChanged', function() {
-        // Обработка изменения темы
+        // Обработка изменения темы, если нужно
+        // Например, можно повторно развернуть WebApp на весь экран
         window.Telegram.WebApp.expand();
-        // Обновляем цвет заголовка при изменении темы
-        setHeaderColor();
+    });
+
+    // Подписка на событие viewportChanged, чтобы управлять изменениями размера
+    window.Telegram.WebApp.onEvent('viewportChanged', function() {
+        // Адаптируем интерфейс под новый размер
+        // Например, можно использовать размер для переработки контента
+        console.log('Viewport changed:', window.Telegram.WebApp.viewport);
     });
 });
