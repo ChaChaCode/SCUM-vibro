@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSymbolIndex = 0;
     let tapCodeText = '';
     let currentEnergy = maxEnergy;
-    let energyRestoreInterval;
     let brightness = 0.3;
     let brightnessTimeout;
 
@@ -85,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function energyRestoreLoop() {
         restoreEnergy();
-        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 2000);
+        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 1000);
     }
     energyRestoreLoop(); // Запускаем функцию восстановления энергии
 
@@ -267,59 +266,54 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         var modalContent = modal.querySelector(".modal-content");
-
-        // Убираем класс hide и добавляем класс show
-        modal.style.display = 'block'; // Показываем модальное окно
-        modal.classList.remove('hide');
-        modal.classList.add('show');
-
-        // Сбрасываем и запускаем анимацию открытия
-        setTimeout(function() {
-            modalContent.classList.remove('close-animation');
-            modalContent.classList.add('open-animation');
-            updateModalSize(modalContent);
-        }, 10); // Небольшая задержка для активации CSS-анимации
+    
+        if (modal) {
+            modal.style.display = "block";
+            gsap.fromTo(modal, 
+                { opacity: 0 }, 
+                { opacity: 1, duration: 0.3 }
+            );
+            gsap.fromTo(modalContent, 
+                { opacity: 0, y: 500 }, 
+                { opacity: 1, y: 0, duration: 0.3, ease: 'power3.inOut' }
+            );
+        }
+    
+        // Обновляем размер модального окна
+        updateModalSize(modalContent);
     }
-
+    
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
-
-        // Убираем класс show и добавляем класс hide
-        modal.classList.remove('show');
-        modal.classList.add('hide');
-
-        // Запускаем анимацию закрытия
-        modalContent.classList.remove('open-animation');
-        modalContent.classList.add('close-animation');
-
-        // После завершения анимации скрываем модальное окно
-        setTimeout(function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = "";
-        }, 300); // Длительность должна совпадать с transition в CSS
-
-        // Сбрасываем анимацию для следующего открытия
-        setTimeout(function() {
-            modalContent.classList.remove('close-animation');
-        }, 300); // Длительность анимации закрытия
+    
+        if (modal) {
+            gsap.to(modalContent, 
+                { opacity: 0, y: 500, duration: 0.3, ease: 'power3.inOut', onComplete: function() {
+                    modal.style.display = "none";
+                } }
+            );
+            gsap.to(modal, 
+                { opacity: 0, duration: 0.3 }
+            );
+        }
     }
-
+    
     // Привязка обработчиков событий к кнопкам и модальным окнам
     var modal1 = document.getElementById("myModal");
     var modal2 = document.getElementById("boosting");
-
+    
     var buttons = [
         { buttonId: "levelbuttonContainer", modalId: "myModal" },
         { buttonId: "boostingButton", modalId: "boosting" }
     ];
-
+    
     buttons.forEach(function(entry) {
         var btn = document.getElementById(entry.buttonId);
         btn.onclick = function() {
             openModal(entry.modalId);
         };
     });
-
+    
     document.querySelectorAll(".modal").forEach(function(modal) {
         var span = modal.querySelector(".close");
         span.onclick = function() {
@@ -331,6 +325,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    
 
     // Обработка событий загрузки страницы и других действий
     window.addEventListener('load', function() {
@@ -340,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-// Проверка и установка поддержки вибрации
+    // Проверка и установка поддержки вибрации
 if (Telegram.WebApp.HapticFeedback) {
     function handleButtonClick(url) {
         return function (e) {
@@ -367,6 +363,7 @@ if (Telegram.WebApp.HapticFeedback) {
     setupButton("rukaBattonContainer", "./index.html");
 
 }
+
     // Устанавливаем интервал для обновления линии ранга каждую секунду
     setInterval(updatePercentage, 1000);
 
