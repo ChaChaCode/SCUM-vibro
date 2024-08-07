@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Разворачиваем WebApp на весь экран
     window.Telegram.WebApp.expand();
 
-    // Функция для установки цвета заголовка в зависимости от фона приложения
+    // Функция для установки цвета заголовка
     function setHeaderColor() {
-        // Предполагаем, что цвет фона установлен для элемента с id 'app-background'
-        var appBackgroundColor = window.getComputedStyle(document.getElementById('app-background')).backgroundColor;
+        // Получаем цвет заголовка из CSS переменной
+        var headerBgColor = getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-header-bg-color').trim();
         // Устанавливаем цвет заголовка
-        window.Telegram.WebApp.setHeaderColor('bg_color', appBackgroundColor);
+        window.Telegram.WebApp.setHeaderColor('bg_color', headerBgColor);
     }
 
     // Устанавливаем цвет заголовка при загрузке страницы
