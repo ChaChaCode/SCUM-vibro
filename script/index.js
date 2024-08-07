@@ -360,8 +360,6 @@ if (Telegram.WebApp.HapticFeedback) {
     setupButton("groupInfoTextContainer", "./info.html");
     setupButton("TaskBattonContainer", "./task.html");
     setupButton("TopStarsBattonContainer", "./leadersbord.html");
-    setupButton("rukaBattonContainer", "./index.html");
-
 }
 
     // Устанавливаем интервал для обновления линии ранга каждую секунду
