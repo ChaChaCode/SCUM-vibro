@@ -9,12 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.Telegram.WebApp.expand();
 
     // Устанавливаем цвет фона заголовка
-    window.Telegram.WebApp.setHeaderColor('#282d3f');
-
-    // Устанавливаем цвет текста заголовка раздела
-    window.Telegram.WebApp.setHeaderColor({
-        section_header_text_color: '#20d589'
-    });
+    window.Telegram.WebApp.setHeaderColor('#ffffff');
 
     // Подписка на событие themeChanged
     window.Telegram.WebApp.onEvent('themeChanged', function() {
