@@ -12,13 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const rankUpNotification = document.getElementById('rankUpNotification');
     const rankNameElement = document.getElementById('rankName');
     const rankRewardElement = document.getElementById('rankReward');
-    const coinValuePerSymbol = 0.004005;
-    const maxEnergy = 50000;
+    const coinValuePerSymbol = 0.000005;
+    const maxEnergy = 500;
     const energyPerTap = 1;
     let currentCoinValue = 0;
     let currentSymbolIndex = 0;
     let tapCodeText = '';
     let currentEnergy = maxEnergy;
+    let energyRestoreInterval;
     let brightness = 0.3;
     let brightnessTimeout;
 
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function energyRestoreLoop() {
         restoreEnergy();
-        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 1000);
+        setTimeout(() => requestAnimationFrame(energyRestoreLoop), 2000);
     }
     energyRestoreLoop(); // Запускаем функцию восстановления энергии
 
@@ -266,54 +267,59 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(modalId) {
         var modal = document.getElementById(modalId);
         var modalContent = modal.querySelector(".modal-content");
-    
-        if (modal) {
-            modal.style.display = "block";
-            gsap.fromTo(modal, 
-                { opacity: 0 }, 
-                { opacity: 1, duration: 0.3 }
-            );
-            gsap.fromTo(modalContent, 
-                { opacity: 0, y: 500 }, 
-                { opacity: 1, y: 0, duration: 0.3, ease: 'power3.inOut' }
-            );
-        }
-    
-        // Обновляем размер модального окна
-        updateModalSize(modalContent);
+
+        // Убираем класс hide и добавляем класс show
+        modal.style.display = 'block'; // Показываем модальное окно
+        modal.classList.remove('hide');
+        modal.classList.add('show');
+
+        // Сбрасываем и запускаем анимацию открытия
+        setTimeout(function() {
+            modalContent.classList.remove('close-animation');
+            modalContent.classList.add('open-animation');
+            updateModalSize(modalContent);
+        }, 10); // Небольшая задержка для активации CSS-анимации
     }
-    
+
     function closeModal(modal) {
         var modalContent = modal.querySelector(".modal-content");
-    
-        if (modal) {
-            gsap.to(modalContent, 
-                { opacity: 0, y: 500, duration: 0.3, ease: 'power3.inOut', onComplete: function() {
-                    modal.style.display = "none";
-                } }
-            );
-            gsap.to(modal, 
-                { opacity: 0, duration: 0.3 }
-            );
-        }
+
+        // Убираем класс show и добавляем класс hide
+        modal.classList.remove('show');
+        modal.classList.add('hide');
+
+        // Запускаем анимацию закрытия
+        modalContent.classList.remove('open-animation');
+        modalContent.classList.add('close-animation');
+
+        // После завершения анимации скрываем модальное окно
+        setTimeout(function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = "";
+        }, 300); // Длительность должна совпадать с transition в CSS
+
+        // Сбрасываем анимацию для следующего открытия
+        setTimeout(function() {
+            modalContent.classList.remove('close-animation');
+        }, 300); // Длительность анимации закрытия
     }
-    
+
     // Привязка обработчиков событий к кнопкам и модальным окнам
     var modal1 = document.getElementById("myModal");
     var modal2 = document.getElementById("boosting");
-    
+
     var buttons = [
         { buttonId: "levelbuttonContainer", modalId: "myModal" },
         { buttonId: "boostingButton", modalId: "boosting" }
     ];
-    
+
     buttons.forEach(function(entry) {
         var btn = document.getElementById(entry.buttonId);
         btn.onclick = function() {
             openModal(entry.modalId);
         };
     });
-    
+
     document.querySelectorAll(".modal").forEach(function(modal) {
         var span = modal.querySelector(".close");
         span.onclick = function() {
@@ -325,8 +331,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    
 
     // Обработка событий загрузки страницы и других действий
     window.addEventListener('load', function() {
@@ -336,40 +340,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+  // Проверка и установка поддержки вибрации
+if (Telegram.WebApp.HapticFeedback) {
+    function handleButtonClick(url) {
+        return function (e) {
+            // Запуск вибрации
+            Telegram.WebApp.HapticFeedback.impactOccurred('soft');
+            // Переход по ссылке
+            window.location.href = url;
+        };
+    }
+
     var monitorBattonContainer = document.getElementById("monitorBattonContainer");
     if (monitorBattonContainer) {
-        monitorBattonContainer.addEventListener("click", function (e) {
-            window.location.href = "./upgrade.html";
-        });
+        monitorBattonContainer.addEventListener("click", handleButtonClick("./upgrade.html"));
     }
 
     var faceBattonContainer = document.getElementById("faceBattonContainer");
     if (faceBattonContainer) {
-        faceBattonContainer.addEventListener("click", function (e) {
-            window.location.href = "./invite.html";
-        });
+        faceBattonContainer.addEventListener("click", handleButtonClick("./invite.html"));
     }
 
     var groupInfoTextContainer = document.getElementById("groupInfoTextContainer");
     if (groupInfoTextContainer) {
-        groupInfoTextContainer.addEventListener("click", function (e) {
-            window.location.href = "./info.html";
-        });
+        groupInfoTextContainer.addEventListener("click", handleButtonClick("./info.html"));
     }
 
     var taskBattonContainer = document.getElementById("TaskBattonContainer");
     if (taskBattonContainer) {
-        taskBattonContainer.addEventListener("click", function (e) {
-            window.location.href = "./task.html";
-        });
+        taskBattonContainer.addEventListener("click", handleButtonClick("./task.html"));
     }
 
     var topStarsButtonContainer = document.getElementById("TopStarsBattonContainer");
     if (topStarsButtonContainer) {
-        topStarsButtonContainer.addEventListener("click", function (e) {
-            window.location.href = "./leadersbord.html";
-        });
+        topStarsButtonContainer.addEventListener("click", handleButtonClick("./leadersbord.html"));
     }
+}
+
 
     // Устанавливаем интервал для обновления линии ранга каждую секунду
     setInterval(updatePercentage, 1000);
