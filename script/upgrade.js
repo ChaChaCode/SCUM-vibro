@@ -1,23 +1,3 @@
-var groupInfoTextContainer = document.getElementById("groupInfoTextContainer");
-if (groupInfoTextContainer) {
-  groupInfoTextContainer.addEventListener("click", function (e) {
-    window.location.href = "./info.html";
-  });
-}
-var rukaBattonContainer = document.getElementById("rukaBattonContainer");
-if (rukaBattonContainer) {
-  rukaBattonContainer.addEventListener("click", function (e) {
-    window.location.href = "./index.html";
-  });
-}
-
-var faceBattonContainer = document.getElementById("faceBattonContainer");
-if (faceBattonContainer) {
-  faceBattonContainer.addEventListener("click", function (e) {
-    window.location.href = "./invite.html";
-  });
-}
-
 function updateModalSize(modalContent) {
     var width = window.innerWidth;
     var scale;
@@ -131,7 +111,6 @@ window.addEventListener('load', function() {
     blurElements.forEach(function(el) {
         el.style.filter = 'none'; // Убираем размытие после загрузки
     });
-});
 
 
     // Проверка и установка поддержки вибрации
@@ -160,3 +139,4 @@ window.addEventListener('load', function() {
         setupButton("rukaBattonContainer", "./index.html");
     
     }
+});
