@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.Telegram.WebApp.setHeaderColor('#282d3f');
 
     // Устанавливаем цвет текста заголовка раздела
-    window.Telegram.WebApp.setThemeParams({
+    window.Telegram.WebApp.setHeaderColor({
         section_header_text_color: '#20d589'
     });
 
