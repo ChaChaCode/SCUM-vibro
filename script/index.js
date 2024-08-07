@@ -346,7 +346,7 @@ if (Telegram.WebApp.HapticFeedback) {
         return function (e) {
             e.preventDefault();
             // Запуск вибрации
-            Telegram.WebApp.HapticFeedback.impactOccurred('soft');
+            Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
             // Переход по ссылке
             window.location.href = url;
         };
@@ -364,6 +364,8 @@ if (Telegram.WebApp.HapticFeedback) {
     setupButton("groupInfoTextContainer", "./info.html");
     setupButton("TaskBattonContainer", "./task.html");
     setupButton("TopStarsBattonContainer", "./leadersbord.html");
+    setupButton("rukaBattonContainer", "./index.html");
+
 }
     // Устанавливаем интервал для обновления линии ранга каждую секунду
     setInterval(updatePercentage, 1000);
