@@ -18,46 +18,32 @@ window.addEventListener('load', function() {
   });
 });
 
-  var monitorBattonContainer = document.getElementById("monitorBattonContainer");
-  if (monitorBattonContainer) {
-    monitorBattonContainer.addEventListener("click", function (e) {
-      window.location.href = "./upgrade.html";
-    });
-  }
+    // Проверка и установка поддержки вибрации
+    if (Telegram.WebApp.HapticFeedback) {
+      function handleButtonClick(url) {
+          return function (e) {
+              e.preventDefault();
+              // Запуск вибрации
+              Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+              // Переход по ссылке
+              window.location.href = url;
+          };
+      }
   
-  var rukaBattonContainer = document.getElementById("rukaBattonContainer");
-  if (rukaBattonContainer) {
-    rukaBattonContainer.addEventListener("click", function (e) {
-      window.location.href = "./index.html";
-    });
-  }
+      function setupButton(id, url) {
+          var button = document.getElementById(id);
+          if (button) {
+              button.addEventListener("click", handleButtonClick(url));
+          }
+      }
   
-  var faceBattonContainer = document.getElementById("faceBattonContainer");
-  if (faceBattonContainer) {
-    faceBattonContainer.addEventListener("click", function (e) {
-      window.location.href = "./invite.html";
-    });
+      setupButton("monitorBattonContainer", "./upgrade.html");
+      setupButton("faceBattonContainer", "./invite.html");
+      setupButton("groupInfoTextContainer", "./info.html");
+      setupButton("TopStarsBattonContainer", "./leadersbord.html");
+      setupButton("rukaBattonContainer", "./index.html");
+
   }
-
-var groupInfoTextContainer = document.getElementById("groupInfoTextContainer");
-if (groupInfoTextContainer) {
-    groupInfoTextContainer.addEventListener("click", function (e) {
-        window.location.href = "./info.html";
-    });
-}
-
-var monitorBattonContainer = document.getElementById("monitorBattonContainer");
-if (monitorBattonContainer) {
-  monitorBattonContainer.addEventListener("click", function (e) {
-      window.location.href = "./upgrade.html";
-  });
-}
-var groupInfoTextContainer = document.getElementById("TopStarsBattonContainer");
-if (groupInfoTextContainer) {
-  groupInfoTextContainer.addEventListener("click", function (e) {
-      window.location.href = "./leadersbord.html";
-  });
-}
 
 
 document.addEventListener("DOMContentLoaded", function() {
