@@ -9,24 +9,22 @@ document.addEventListener('DOMContentLoaded', function() {
     window.Telegram.WebApp.expand();
 
     // Устанавливаем цвет фона заголовка
-    window.Telegram.WebApp.setHeaderColor('#282d3f'); // Установлен цвет
+    window.Telegram.WebApp.setHeaderColor('#282d3f');
 
-    // Устанавливаем цвет текста заголовков секций
+    // Устанавливаем цвет текста заголовка раздела
     window.Telegram.WebApp.setThemeParams({
-        section_header_text_color: '#20d589' // Цвет текста заголовков секций
+        section_header_text_color: '#20d589'
     });
 
     // Подписка на событие themeChanged
     window.Telegram.WebApp.onEvent('themeChanged', function() {
         // Обработка изменения темы, если нужно
-        // Например, можно повторно развернуть WebApp на весь экран
         window.Telegram.WebApp.expand();
     });
 
     // Подписка на событие viewportChanged, чтобы управлять изменениями размера
     window.Telegram.WebApp.onEvent('viewportChanged', function() {
         // Адаптируем интерфейс под новый размер
-        // Например, можно использовать размер для переработки контента
         console.log('Viewport changed:', window.Telegram.WebApp.viewport);
     });
 });
