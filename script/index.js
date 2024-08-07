@@ -340,10 +340,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-  // Проверка и установка поддержки вибрации
+// Проверка и установка поддержки вибрации
 if (Telegram.WebApp.HapticFeedback) {
     function handleButtonClick(url) {
         return function (e) {
+            e.preventDefault();
             // Запуск вибрации
             Telegram.WebApp.HapticFeedback.impactOccurred('soft');
             // Переход по ссылке
@@ -351,33 +352,19 @@ if (Telegram.WebApp.HapticFeedback) {
         };
     }
 
-    var monitorBattonContainer = document.getElementById("monitorBattonContainer");
-    if (monitorBattonContainer) {
-        monitorBattonContainer.addEventListener("click", handleButtonClick("./upgrade.html"));
+    function setupButton(id, url) {
+        var button = document.getElementById(id);
+        if (button) {
+            button.addEventListener("click", handleButtonClick(url));
+        }
     }
 
-    var faceBattonContainer = document.getElementById("faceBattonContainer");
-    if (faceBattonContainer) {
-        faceBattonContainer.addEventListener("click", handleButtonClick("./invite.html"));
-    }
-
-    var groupInfoTextContainer = document.getElementById("groupInfoTextContainer");
-    if (groupInfoTextContainer) {
-        groupInfoTextContainer.addEventListener("click", handleButtonClick("./info.html"));
-    }
-
-    var taskBattonContainer = document.getElementById("TaskBattonContainer");
-    if (taskBattonContainer) {
-        taskBattonContainer.addEventListener("click", handleButtonClick("./task.html"));
-    }
-
-    var topStarsButtonContainer = document.getElementById("TopStarsBattonContainer");
-    if (topStarsButtonContainer) {
-        topStarsButtonContainer.addEventListener("click", handleButtonClick("./leadersbord.html"));
-    }
+    setupButton("monitorBattonContainer", "./upgrade.html");
+    setupButton("faceBattonContainer", "./invite.html");
+    setupButton("groupInfoTextContainer", "./info.html");
+    setupButton("TaskBattonContainer", "./task.html");
+    setupButton("TopStarsBattonContainer", "./leadersbord.html");
 }
-
-
     // Устанавливаем интервал для обновления линии ранга каждую секунду
     setInterval(updatePercentage, 1000);
 
