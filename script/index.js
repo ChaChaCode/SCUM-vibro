@@ -346,7 +346,7 @@ if (Telegram.WebApp.HapticFeedback) {
         return function (e) {
             e.preventDefault();
             // Запуск вибрации
-            Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+            Telegram.WebApp.HapticFeedback.impactOccurred('medium');
             // Переход по ссылке
             window.location.href = url;
         };
